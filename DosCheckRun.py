@@ -64,7 +64,7 @@ def run(case, beam_set, examination):
             """
             If all the beams share the same iso and couch, only have to run once
             """
-            for roi_name, radius in zip(["GantryHead", "kVPanel"], [25, 51]):
+            for roi_name, radius in zip(["GantryHead", "kVPanel"], [42, 51]):
                 make_cylinder(case, examination, couch_angle, iso, roi_names, roi_name, color='red',
                               radius=radius, length=25)
                 overlap_name = "Potential_Collision" + '_' + beam_name

@@ -46,6 +46,8 @@ def make_box(case, examination, iso, roi_names, name, color='red', lr=70, sup_in
 def run(case, beam_set, examination):
     couch_isocenters = {}
     roi_names = [i.Name for i in case.PatientModel.RegionsOfInterest]
+    external_roi = [i.Name for i in case.PatientModel.RegionsOfInterest if i.Type == 'External' and
+                    case.PatientModel.StructureSets[examination.Name].RoiGeometries[i.Name].HasContours()]
     for beam in beam_set.Beams:
         beam_name = beam.Name
         couch_angle = beam.CouchRotationAngle
@@ -74,7 +76,7 @@ def run(case, beam_set, examination):
                     case.PatientModel.RegionsOfInterest[overlap_name].DeleteRoi()
                     ret_val = case.PatientModel.CreateRoi(Name=overlap_name, Color='blue', Type="Undefined")
                 ret_val.CreateAlgebraGeometry(Examination=examination, Algorithm="Auto",
-                                              ExpressionA={'Operation': "Union", 'SourceRoiNames': [r"External ROI"],
+                                              ExpressionA={'Operation': "Union", 'SourceRoiNames': external_roi,
                                                            'MarginSettings': {'Type': "Expand", 'Superior': 5,
                                                                               'Inferior': 5, 'Anterior': 5, 'Posterior': 0,
                                                                               'Right': 5, 'Left': 5}},

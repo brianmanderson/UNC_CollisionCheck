@@ -67,7 +67,7 @@ class choosePOI(Window):
                     case.PatientModel.RegionsOfInterest["GantryHead_42cm"].DeleteRoi()
                     retval_0 = case.PatientModel.CreateRoi(Name=r"GantryHead_42cm", Color="Red", Type="Undefined")
 
-                retval_0.CreateCylinderGeometry(Radius=42, Axis={'x': 0, 'y': 0, 'z': 1}, Length=80,
+                retval_0.CreateCylinderGeometry(Radius=25, Axis={'x': 0, 'y': 0, 'z': 1}, Length=80,
                                                 Examination=examination, Center={'x': px, 'y': py, 'z': pz},
                                                 Representation="Voxels", VoxelSize=None)
 
@@ -77,7 +77,7 @@ class choosePOI(Window):
                     case.PatientModel.RegionsOfInterest["kVpanel_51cm"].DeleteRoi()
                     retval_1 = case.PatientModel.CreateRoi(Name=r"kVpanel_51cm", Color="Yellow", Type="Undefined")
 
-                retval_1.CreateCylinderGeometry(Radius=51, Axis={'x': 0, 'y': 0, 'z': 1}, Length=80,
+                retval_1.CreateCylinderGeometry(Radius=27, Axis={'x': 0, 'y': 0, 'z': 1}, Length=80,
                                                 Examination=examination, Center={'x': px, 'y': py, 'z': pz},
                                                 Representation="Voxels", VoxelSize=None)
 
